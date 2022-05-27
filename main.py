@@ -27,13 +27,13 @@ pygame.display.set_caption('Drummer')
 label_font = pygame.font.Font('Roboto-Bold.ttf', 32)
 medium_font = pygame.font.Font('Roboto-Bold.ttf', 24)
 
-FPS = 120
+FPS = 240
 timer = pygame.time.Clock()
 beats = 16
 instruments = 6
 boxes = []
 clicked = [[-1 for _ in range(beats)] for _ in range(instruments)]
-bpm = 138
+bpm = 120
 playing = False
 active_length = 0
 active_beat = 0
@@ -337,8 +337,8 @@ while run:
     # read https://toolstud.io/music/bpm.php?bpm=138&bpm_unit=4%2F4
     # beat_length = (FPS * 60 / 4 * .93703148425787106446) // bpm
 
-    beat_length = ((FPS * 60 - delta) / 4) // bpm
-    # print(beat_length)
+    beat_length = ((FPS * (60 - delta)) / 4) // bpm
+    # print(delta, beat_length)
     # .93 is
     # beat_length = 6.96
     # beat_length = 6.8
