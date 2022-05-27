@@ -182,7 +182,9 @@ run = True
 index = 100
 
 while run:
-    timer.tick(FPS)
+
+    delta = timer.tick(FPS)
+
     screen.fill(black)
 
     boxes = draw_grid(clicked, active_beat, active_list)
@@ -333,7 +335,9 @@ while run:
 
     # 0.94444444
     # read https://toolstud.io/music/bpm.php?bpm=138&bpm_unit=4%2F4
-    beat_length = (FPS * 60 / 4 * .93703148425787106446) // bpm
+    # beat_length = (FPS * 60 / 4 * .93703148425787106446) // bpm
+    beat_length = ((FPS * 60 + delta) / 4) // bpm
+    # print(dt)
     # .93 is
     # beat_length = 6.96
     # beat_length = 6.8
